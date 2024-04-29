@@ -21,7 +21,7 @@ def test_remove_empties_from_dict(value, expected):
 
 
 def test_cli_xml_to_json(tmp_path, snapshot):
-    in_path = os.path.dirname(__file__) + "/data/one_record.xml"
+    in_path = os.path.dirname(__file__) + "/data/local/one_record.xml"
     out_path = f"{tmp_path}/one_record.jsonl"
     conversion.convert(
         in_path,

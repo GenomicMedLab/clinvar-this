@@ -15,7 +15,7 @@ from clinvar_this import cli
 )
 def test_cli_xml_to_json(fname_in, fname_out, tmp_path, snapshot):
     runner = CliRunner()
-    in_path = os.path.dirname(__file__) + f"/data/{fname_in}"
+    in_path = os.path.dirname(__file__) + f"/data/local/{fname_in}"
     out_path = f"{tmp_path}/{fname_out}"
     result = runner.invoke(cli.cli, ["data", "xml-to-jsonl", in_path, out_path])
     assert result.exit_code == 0
@@ -29,7 +29,7 @@ def test_cli_xml_to_json(fname_in, fname_out, tmp_path, snapshot):
 
 
 def test_cli_xml_to_json_stdin_stdout(snapshot):
-    in_path = os.path.dirname(__file__) + "/data/one_record.xml"
+    in_path = os.path.dirname(__file__) + "/data/local/one_record.xml"
     with open(in_path, "rt") as inputf:
         stdin_txt = inputf.read()
 
@@ -60,7 +60,7 @@ def test_cli_xml_to_json_stdin_stdout(snapshot):
 )
 def test_convert_snapshot_to_jsonl(fname_in, tmp_path, snapshot):
     runner = CliRunner()
-    in_path = os.path.dirname(__file__) + f"/data/{fname_in}"
+    in_path = os.path.dirname(__file__) + f"/data/local/{fname_in}"
     out_path = f"{tmp_path}/out.jsonl"
     result = runner.invoke(cli.cli, ["data", "xml-to-jsonl", in_path, out_path])
     assert result.exit_code == 0, result.stdout
